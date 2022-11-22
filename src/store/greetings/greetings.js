@@ -8,7 +8,7 @@ const initialState = {
   greeting: '',
 };
 
-export default (state = initialState, action) => {
+const greetingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case `${FETCH}/fulfilled`:
       return { ...state, greeting: action.payload };
@@ -22,3 +22,5 @@ export const fetchGreeting = createAsyncThunk(FETCH, async () => {
   const data = await response.json();
   return data.msg;
 });
+
+export default greetingsReducer;
